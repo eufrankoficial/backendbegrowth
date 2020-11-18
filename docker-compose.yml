@@ -1,0 +1,18 @@
+version: "2.2"
+
+services:
+  backendapi:
+    build: .
+    command: yarn tsc
+    command: npm start
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/var/www/html
+  db:
+    image: 'mongo'
+    container_name: dbbegrowth
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./data/db:/data/db
